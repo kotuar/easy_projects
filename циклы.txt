@@ -1,0 +1,151 @@
+№1
+#include <iostream>
+using namespace std;
+int main(){
+float n = 1,buff,summ;
+cout « "введите последовательность чисел если введете 0 то конец"«endl;
+while (n != 0){
+cin » n;
+summ += n;
+}
+cout «"сумма чисел = "« summ;
+} 
+VIVOD
+введите последовательность чисел �сли введете 0 то конец
+2
+5
+1
+0
+сумма чисел = 8
+№3
+#include <iostream>
+
+using namespace std;
+
+int main() {
+int password = 1234, password1 = 0;
+cout << "Введите пароль: ";
+cin >> password1;
+while (password != password1) {
+cout << "\nПароль неверный, введите новый пароль: ";
+cin >> password1;
+}
+cout << "\nПравильный пароль = " << password1;
+}
+вывд
+Введите пароль: 25
+
+Пароль неверный, введите новый пароль: 1234
+
+Правильный парол� = 1234
+
+№4
+#include <iostream>
+using namespace std;
+int main(){
+	int a, b,c;
+	cout << "введите a и b(a>b)";
+	cin >> a >> b;
+	cout << "все числа от a до b ";
+	if (a < b) {
+		for (a = a; a < b; a++)
+			cout << a<<" ";
+		}
+	}
+выводы
+введите a и b
+2
+9
+все числа от a до b 2 3 4 5 6 7 8 
+№5
+#include <iostream>
+ 
+using namespace std;
+ 
+int main()
+{
+    int n;
+    cout << "вводите n= ";
+    cin>>n;
+    for(int i=0; i<n; i+=2){
+        cout<<i<<" ";
+    }
+}
+вывод
+вводите n= 30
+0 2 4 6 8 10 12 14 16 18 20 22 24 26 28
+№6
+#include <iostream>
+using namespace std;
+int factorial(int N){
+int F = 1;
+    for(int i=1; i<=N; ++i){
+        F *= i;
+    }
+return F;
+}
+    int main(){
+    int N;
+        cout << " введите число ятобы найти факториал N = ";
+        cin >> N;
+    if(N >= 0)
+{
+cout << factorial(N);
+}
+else
+{
+cout << "Error: N < 0.";
+}
+return 0;
+}
+vivod
+ введите число ятобы найти фактори�л N = 3
+6
+№7
+#include <iostream>
+using namespace std;
+int main(){
+	float n = 1,b;
+	while (n != 0) {
+		cout << "введите последовательность чисел(n> 0) если введете 0 то конец"<<endl;
+		cin >> n;
+		if (n < 0) {
+			cout << "так нельзя "<< endl;
+			return 0;
+		}
+		b = n * n;
+		cout << "квадрат чисел = " << b<<endl;
+		}
+	cout << "конец";
+}
+
+VIVOD
+введите последовательность чисел(n> 0) если введете 0 то конец
+2
+квадрат чисел = 4
+введите последовательность чисел(n> 0) если введете 0 то конец
+6
+квадрат чисел = 36
+введите последовательность чисел(n> 0) если введете 0 �о конец
+0
+квадрат чисел = 0
+�онец
+№8
+#include <iostream>
+using namespace std;
+int main(){
+int n;
+cout « "1-ввести 2-вывести 3-расчитать 4-выход"« endl;
+cin » n;
+if (n == 4)
+return 0;
+else
+main();
+} 
+VIVOD
+1-ввести 2-вывести 3-расчитать 4-выхо�
+1
+1-ввести 2-вывести 3-расчитать 4-выход
+2
+1-ввести 2-вывести 3-расчитать 4-выход
+4

@@ -1,0 +1,32 @@
+#include <iostream>
+#include <ctime>
+#include <chrono> //для постановки метки времени чтобы понимать сколько прога выполнялась
+/* O - сложность алгоритмов
+O(n)- линейнная сложность
+n - кол-во элементов
+при n = 100
+O(n) - 100 единиw времени
+для пузырьковой и шейкерной = O(n^2)
+для быстрой = O(nlg(n))
+память в vs справа навести
+*/
+using namespace std;
+int main(){
+//htrehcbz bnefwbz ghb rjnjhjq aeyrwbz dspsdftn cfve ctvz
+int i,n,left,right;
+srand(time(0))
+setlocale(LC_ALL, "Rus")
+cout«"введите кол-во элементов = "«endl;
+cin »n;
+int * a= new int[n]//* указатель на ячейку памяти
+for (i=0;i<n;i++){
+a[i]=rand()% 62 - 19
+cout« a[i];
+}
+left = 0;
+right = n-1;
+auto start = chrono::hight_resolution_clock::now();// start название дальше обращение к библиотеке hrc это процедура и метка на время сейчас
+//вызов функции для сортировки
+auto stop = chrono::hight_resolution_clock::now();
+chrono::duration <float> difference = (stop - start);
+}

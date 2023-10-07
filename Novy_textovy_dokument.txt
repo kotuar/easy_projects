@@ -1,0 +1,316 @@
+//№1
+#include <iostream>
+#include <windows.h>
+#include <string.h>
+
+using namespace std;
+
+void main() {
+    setlocale(LC_ALL, "ru");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    cout << "Введите строку: " ;
+    char str[255]{"\0"}; cin >> str;
+    cout << "Введите номер начального символа подстроки:  ";
+    int firstnumber ; cin >> firstnumber;
+    firstnumber--; /* для счёта по человечески*/
+    cout << "Введите номер конечного символа подстроки:  ";
+    int secondnumber; cin >> secondnumber;
+    char str1[255]{"\0"};
+    if (strlen(str) < secondnumber||0 > firstnumber|| secondnumber< firstnumber) {
+        cout << "\n\n\n ВЫ ВВЕЛИ НЕВЕРНЫЙ ДИАПАЗОН! \n\n\n ";
+        exit;
+    }
+    else {
+        int i = 0,q = firstnumber;
+        cout << "\nПодстрока: ";
+        for (firstnumber = firstnumber; firstnumber != secondnumber; firstnumber++) {
+            str1[i] = str[q];
+            i++; q++;
+        }
+        cout << str1;
+        cout << endl;
+    }
+    system("pause");
+}
+Введите строку: 1234567890QWERTYUIOP[ASDFGHJKL;ZXCVBNM,./
+Введите номер начального символа подстроки:  10
+Введите номер конечного символа подстроки:  20
+
+Подстрока: 0QWERTYUIOP
+
+
+//№2
+#include <iostream>
+#include <windows.h>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "ru");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    string str;
+    int w = 0;
+    cout << "Ниже введите строку содержащую символ ':'"<< endl;
+    cin >> str;
+    for (int i = 0; i <= size(str); i++)
+        if (str[i] == ':') {
+            w = size(str) - i - 1;
+        }
+    cout << "\n" <<"Количество символов после двоеточия "<< w ;
+
+}
+Ниже введите строку содержащую символ ':'
+123456qwertasdfgzxcvb:12345qwertйцу
+
+Количество символов после двоеточия 13
+
+//№3
+#include <iostream>
+#include<windows.h>
+#include <ctime>
+
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "ru");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    srand(time(0));
+    const int e = 10;
+    int i, q = 0, w;
+    for (i = 0; i < e; i++) {
+        w = 33 + rand() % 95;
+        char a[e] = { (char)w };
+        cout << a << " ";
+        if (48 <= w && w <= 57)
+            q++;
+    }
+    cout << "\nПроцент цифровых символов в строке равен = " << q / (double)e * 100 << "%";
+
+}
+
+v q e 2 0 - M N 1 \
+Процент цифровых символов в строке равен = 30%
+
+//№4
+#include <iostream>
+#include<windows.h>
+#include <string>
+
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "ru");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    string str;
+    cout << "Введите строку: ";
+    cin >> str;
+    cout << "\n" <<"Строка наоборот: " ;
+    for (int i = 0; i <= size(str); i++)
+        cout << str[size(str) - i];
+}
+Вывод
+Введите строку: 123йцуqwe
+
+Строка наоборот: ewqуцй321
+
+//№5
+
+
+#include <iostream>
+#include <windows.h>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "ru");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    string str;
+    int w = 0;
+    cout << "Ниже введите строку содержащую символ ':'" << endl;
+    cin >> str;
+    for (int i = 0; i <= size(str); i++)
+        if (str[i] == ':') {
+            w = i;
+        }
+    cout << "\n" << "Количество символов после двоеточия " << w;
+
+}
+
+
+Ниже введите строку содержащую символ ':'
+йуцйцуйцйцуйцйцйцуйуцуйцуйцйцуйцуйц:йцуйцуйцуйцусс24124124123123
+
+Количество символов после двоеточия 35
+
+
+//№6
+#include <iostream>
+#include<windows.h>
+#include <ctime>
+
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "ru");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    srand(time(0));
+     char s;
+    int i, q = 0, w;
+    cout << "Введите любой символ = "; cin >> s;
+    for (i = 0; i < 20; i++) {
+        w = 48 + rand() % 9;
+        char a[20] = { (char)w };
+        cout << a<<" ";
+        if (*a == s)
+            q++;
+    }
+    cout << "\nCимвол который вы ввели встретился в строке " << q << " раз";
+
+}
+Введите любой символ = 4
+1 7 5 5 4 3 1 1 6 7 5 0 3 3 3 8 0 7 5 1
+Cимвол который вы ввели встретился в строке 1 раз
+
+
+//№7 
+#include <iostream>
+#include <windows.h>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "ru");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    char str[11]{};
+    int q = 0;
+    cout << "Введите последовательно 10 кодов символов в диапозоне 33 - 126:" << endl;
+
+    for (int i = 0; i < 10; i++)
+    {
+        cin >> q;
+        if (q > 32 && q < 127)
+            str[i] = (char)q;
+        else
+            str[i] = 'w';
+    }
+    cout << "\nCтрока из символов: ";
+    for (int i = 0; i < 10; i++)
+        cout << str[i] << "  ";
+    cout << "\n\n\nw(wrong) означает что число не входит в указанный диапазон   "<< "\n\n\n";
+    system("pause");
+    
+}
+
+Введите последовательно 10 кодов символов в диапозоне 33 - 126:
+-100 100 0 123 33 33 126 123 555 341232
+
+Cтрока из символов: w  d  w  {  !  !  ~  {  w  w
+
+
+w(wrong) означает что число не входит в указанный диапазон
+
+
+//№8
+#include <iostream>
+#include <windows.h>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "ru");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    string str;
+    int w = 0;
+    cout << "Введите строку с символом <<:>>" << endl;
+    cin >> str;
+    cout << "\n" << "Вывод строки с заменой ";
+    for (int i = 0; i <= size(str); i++) {
+        if (str[i] == ':') {
+            str[i] = '*';
+            w++;
+        }
+            cout << str[i];
+        }
+    cout << "\nКоличество замен " << w;
+
+}
+
+
+Введите строку с символом <<:>>
+йцуйцу:::йцуйцу::йцу66
+
+Вывод строки с заменой йцуйцу***йцуйцу**йцу66
+Количество замен 5
+
+
+
+№9
+#include <iostream>
+#include<windows.h>
+#include <ctime>
+
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "ru");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    srand(time(0));
+    const int e = 10;
+    int i, q = 0, w;
+    for (i = 0; i < e; i++) {
+        w = 33 + rand() % 95;
+        char a[e] = { (char)w };
+        cout << a<< " ";
+        if (66<=w&&w<=90||97 <=w && w<=122 )
+            q++;
+    }
+    cout << "\nПроцент буквенных символов в строке равен = " << q / (double)e * 100 <<"%";
+}
+{ @ O b l y v R < 
+Процент буквенных символов в строке равен = 60%
+
+
+
+//№10
+#include <iostream>
+#include <windows.h>
+#include <string.h>
+
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "ru");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    string str;
+    int w = 0;
+    cout << "Введите строку с символами <<(>>,<<)>>" << endl;
+    cin >> str;
+    for (int i = 0; i <= size(str); i++) {
+        if (str[i] == '(')
+            w++;
+        else if (str[i] == ')')
+            w--;
+  
+        }
+    w == 0 ? printf( "\nЧисло кавычек одинаковое ") : w != 0 ? printf( "\nЧисло кавычек разное " ): w = w;
+
+}
+
+Введите строку с символами <<(>>,<<)>>
+123123123(((())))qweqw))9()()(\
+
+Число кавычек разное

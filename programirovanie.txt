@@ -1,0 +1,245 @@
+№1	
+#include <iostream>
+
+using namespace std;
+
+int main() {
+#include <iostream>
+using namespace std;
+int main() {
+int a, b, c, k;
+cout << "ax^2 + bx + c " << endl;
+cout << "a = ";
+cin >> a;
+cout <<"b = ";
+cin >> b;
+cout <<"c = ";
+cin >> c;
+k = b*b - 4 * a * c;
+if (k>0)
+cout << "2 корня";
+else if (k>=0)
+cout << "1 корень";
+else
+cout << "0 корней";
+}
+VIVOD
+ax^2 + bx + c 
+a = 5
+b = 2
+c = 1
+0 корней
+№2
+#include <iostream>
+using namespace std;
+int main()
+{
+	int z, x, c, f;
+	cout << "Введите 3 переменных"<<endl;
+	cin >> z >> x >> c ;
+    if (z<0){
+    f+=1;
+    }
+    if(x<0){
+    f+=1;
+    }
+    if (c<0){
+    f+=1;
+    }
+    cout << "количество отрицательных чисел равно = "<< f;
+}
+VIVOD
+Введите 3 переменных
+-1
+-2
+0
+количество отриц�тельных чисел равно = 2
+№3
+#include <iostream>
+using namespace std;
+int main()
+{
+int z;
+cout << "введите число" << endl;
+cin >> z;
+if (z > 0)
+cout << "Положительное число";
+else if (z < 0)
+cout << "Отрицательные число";
+else if (z == 0)
+cout << "Нулевое число";
+}
+VIVOD
+введите число
+23
+Положительное чи�ло
+№4
+#include <iostream>
+using namespace std;
+int main()
+{
+double z,x,c;
+cout << "Введите делимое число" << endl;
+cin >> z;
+cout << "введите делитель" << endl;
+cin >> x;
+if (x == 0)
+cout << "деление невозможно" << endl;
+else
+{
+c = z/x;
+cout << "частное равно " << c;
+}
+}
+VIVOD
+Введите делимое число
+24
+введите делитель
+2
+частное равно 12
+№5
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+int z,x,c;
+cout <<  "введите 3 числа" <<  endl;
+cin >> z >>  x >> c;
+cout<<  "четные числа" <<  endl;
+if (z % 2 == 0 )
+cout <<  z<< " ";
+if (x % 2 ==0 )
+cout <<  x <<  " ";
+if (c % 2 ==0)
+cout<< c <<  " ";
+}
+Вывод 5:
+введите 3 числа
+2
+1
+0
+четные числа
+2 0
+№6
+#include <iostream>
+using namespace std;
+int main()
+{
+int a,b,c;
+cout << "введите чиса a,b,c" << endl;
+cin >> a >> b >> c;
+if (a > b) {
+if (a >= c && b <= c)
+cout << "c принадлежит диапазону от b до a";
+else
+cout << "c не принадлежит диапазону от b до a";
+}
+ if (a < b) {
+if (a <= c && b >= c)
+cout << "c принадлежит диапазону от a до b";
+else
+cout << "c не принадлежит диапазону от a до b";
+}
+else if (a == b) {
+if (a == c && b == c)
+cout << "c принадлежит диапазону от a до b";
+else
+cout << "c не принадлежит диапазону от a до b";
+}
+}
+введите чиса a,b,c
+1
+5
+2
+c принадлежит диа�азону от a до b
+№7
+    #include <iostream>
+    
+    using namespace std;
+    
+    int main()
+    {
+    int z,x,c;
+    cout << "введите 2 числа" << endl;
+    cin >> z>>x;
+    if (z == x) {
+    c = z + x;
+    cout << "сумма 2 чисел "<< c;
+    }
+    else {
+    c = z - x;
+    cout << "разность 2 чисел равна " << c;
+    }
+    }
+Вывод 7:
+введите 2 числа
+1
+4
+разность 2 чисел равна -3
+№8
+#include <iostream>
+
+using namespace std;
+
+int main(){
+  int z,x,c;
+  cout<<"введите 2 числа чтобы получить большее из них, или сумму если они равны" << endl;
+  cin >> z >> x;
+  if (z>x)
+  cout << "большее число это = "<< z << endl;
+  else if (z<x)
+  cout << "большее число это = "<< x << endl;
+  else if (z==x)
+  cout << "сумма двух чисел равна = "<< x+z << endl;
+}
+Вывод 8:
+введите 2 числа чтобы получить большее из них, или сумму если они равны
+2
+123
+большее число это = 123
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

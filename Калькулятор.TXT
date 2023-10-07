@@ -1,0 +1,64 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <stdlib.h>
+using namespace std;
+
+int main(){
+float a,b;
+char c;
+string x;
+cout«"press anykey for kalculator or 0 for exit"«endl;
+cin»c;
+if (c=='0') {
+exit(0);
+}
+cout«"vvedite a"«endl;
+cin»a;
+do{
+cout«"enter +,-,*,/,^,%"«endl;
+cin»c;
+cout«"enter b"«endl;
+cin»b;
+switch(c){
+case '+':
+cout«a«c«b«"="«a+b«endl;
+a=a+b;
+break;
+case '-':
+cout«a«c«b«'='«a-b«endl;
+a=a-b;
+break;
+case '*':
+cout«a«c«b«'='«a*b«endl;
+a=a*b;
+break;
+case '/':
+if (b==0){
+cout«"nelzia dlit na nol debil"«endl;
+}
+else{
+cout«a«c«b«'='«a/b«endl;
+a=a/b;
+}
+break;
+case '^':
+cout«a«c«b«"="«pow(a,b)«endl;
+a=pow(a,b);
+break;
+case '%':
+if (b==0){
+cout«"a%b=0%"«endl;
+a=0;
+}
+cout«a«c«b«"="«a/b*100«"%"«endl;
+a=a/b*100;
+break;
+default:
+cout«"Error, unknown operation"«endl;
+}
+cout«"Continue? yes/no"«endl;
+cin»x;
+cout«a«endl;
+} while (x=="yes");
+}

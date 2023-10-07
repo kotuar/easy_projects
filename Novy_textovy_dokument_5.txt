@@ -1,0 +1,193 @@
+//№2
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	double m = 0,q = 0,w = 0;
+	long n = 0,a = 0,s = 0;
+	cout << "Введите число N = "; cin >> n; a = n;
+	cout << "\nВведите цифру M = "; cin >> m; s = m;
+	while (n != 0)
+	{
+		q = n % 10;
+		n = n / 10;
+		if (q == m)
+			w++;
+	}
+	cout << "\n \t в числе " << a; 
+	cout <<"\n" <<"\t " << w << " цифр " << m;
+
+}
+Введите число N = 1233
+
+Введите цифру M = 3
+
+ в числе 1233
+2 цифр 3
+
+//№3
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	int fn = 0, fn1 = 1, fn2 = 1,a;
+	cout << "введите конечное число последовательности Фибоначи = "; 
+	cin >> a;
+	cout << "Ответ: ";
+	if (a >= 3)
+		for (int i = 0; i <= a - 2; i++) {
+		fn = fn1 + fn2;
+		fn1 = fn2;
+		fn2 = fn;
+		
+	}
+	cout << fn1 << " ";
+}
+Введите какое число Фибоначчи вы хотите узнать - 12
+144
+№4	
+#include <iostream>
+	using namespace std;
+	int main(){
+	setlocale(LC_ALL, "RUS");
+	int a,b,v,c;
+	cout << "введите число а = ";
+	cin >> a ;
+	cout << "введите число b = ";
+	cin >> b;
+	c = a;
+	v = b;
+
+	if (a > b) {
+		for (int i = 1; i < a; i++)
+			b = b + v;
+		cout << "\nПроизведение чисел a и b = " << b;
+	}
+	else {
+		for (int i = 1; i < b; i++)
+			a = a + c;
+		cout << "\nПроизведение чисел a и b = " << a;
+	}
+}
+введите число а = 12
+введите число b = 123
+
+Произведение чисел a и b = 1476
+№5
+#include <iostream>
+using namespace std;
+int main()
+{
+	int a = 0, i = 9;
+	setlocale(LC_ALL, "RUS");
+	cout << "введите число = ";
+	cin >> a;
+	while (a > 0) {
+		if (a % 10 <= i)
+			i = a % 10;
+		a /= 10;
+	}
+		cout << "\nОтвет = " << i;
+}	
+введите число = 123123
+
+Ответ = 1
+//№6
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	double n = 0, m = 0, q = 0;
+	cout << "Введите диапазон от N = "; cin >> n;
+	cout << "                до  M = "; cin >> m;
+	if (n > m)
+		swap(n,m);
+	cout << "\nЦелые квадратные числа из диапазона";
+	for (n = n; n < m; n++)
+	{
+		q = sqrt(n);
+		if (q == (int)q)
+			cout << " " << q;
+	}
+}
+Введите диапазон от N = 123
+                до  M = 1
+
+Целые квадратные числа из диапазона 1 2 3 4 5 6 7 8 9 10 11
+
+№7
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int a = 0,q=0;
+	setlocale(LC_ALL, "RUS");
+	for (int i = 0; i < 100; i++)
+	{
+		a = i;
+		if (a * a * a < 50000) {
+			q++;
+			
+	  }
+	}
+	cout << "кубы " << q << " натуральных чисел не превышают 50000" << endl;
+}
+кубы 36 натуральных чисел не превышают 50000
+№ 8
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "RUS");
+		 float a = 5,q=0.087;
+		int i;
+
+		for (i = 5; i <= 45; i += 5) {
+			
+			a = sin(q);
+			q += 0.087;
+			cout.precision(5);
+			cout << "синус " << i << " градусов = " << a<<endl;
+		}
+}синус 5 градусов = 0.08689
+синус 10 градусов = 0.17312
+синус 15 градусов = 0.25805
+синус 20 градусов = 0.34102
+синус 25 градусов = 0.42141
+синус 30 градусов = 0.49861
+синус 35 градусов = 0.57205
+синус 40 градусов = 0.64115
+синус 45 градусов = 0.70541
+№9
+#include <iostream>
+using namespace std;
+int foo(int a) {
+		while (a != 0) {
+			if (a % 2 == 1 && a % 3 == 2 && a % 4 == 3 && a % 5 == 4 && a % 6 == 5)
+				cout << "правильное число = " << a;	
+				exit;
+				if (a > 100)
+					return 0;
+				a++;
+				return foo(a);
+			}
+		}
+int main()
+{
+	setlocale(LC_ALL, "RUS");
+	foo(1);
+}
+правильное число = 59

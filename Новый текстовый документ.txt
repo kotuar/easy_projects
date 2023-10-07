@@ -1,0 +1,611 @@
+//№1
+#include <iostream>
+#include <ctime>
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "ru");
+    srand(time(0));
+    int lenght, weight, q, qw, i = 0, j = 0;
+    long zxc = 1, zxc1 = 1, zxc2 = 1;
+    double zxc3 = 0;
+    cout << "Введите размерность массива через пробел: ";
+    cin >> lenght >> weight;
+    cout << "\nВведите диапазон диапазон значений в массиве через пробел ";
+    cin >> q >> qw;
+    qw = qw - q;
+    int** ptrarray = new int* [lenght];
+    for (int i = 0; i < lenght; i++)
+        ptrarray[i] = new int[weight];
+    for (int i = 0; i < lenght; i++) {
+        for (int j = 0; j < weight; j++) {
+            ptrarray[i][j] = rand() % qw + q;
+            cout << ptrarray[i][j] << " ";
+        }
+        cout << endl;
+    }
+    for (int i = 0; i < lenght; i++)
+        for (int j = 0; j < weight; j++)
+            zxc = zxc * ptrarray[i][j];
+    for (int j = 0; j < lenght; j++)
+        for (int i = 0; i < weight; i++)
+            zxc1 = zxc1 * ptrarray[i][j];
+    cout << "\nпроизведенеие столбцов = " << zxc1;
+    cout << "\nпроизведение строк = " << zxc;
+    zxc2 = zxc2 + (zxc1 + zxc);
+    cout << "\nсумма произведений элементов строк и слобцов = " << zxc2;
+    for (int i = 0; i < lenght; i++)
+        for (int j = 0; j < weight; j++)
+            zxc3 = zxc3 + ptrarray[i][j];
+    zxc3 = zxc3 / (lenght*weight);
+    printf("\nсреднее арифметическое строк и столбцов = %.3f", zxc3);
+    delete[] ptrarray;
+}
+
+Введите размерность массива через пробел: 3 3
+
+Введите диапазон диапазон значений в массиве через пробел 1 10
+1 2 4
+6 7 8
+6 2 8
+
+произведенеие столбцов = 258048
+произведение строк = 258048
+сумма произведений элементов строк и слобцов = 516097
+среднее арифметическое строк и столбцов = 4,889
+
+=========================================================================================================================
+№2
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "ru");
+    srand(time(0));
+    int lenght, weight, q, qw, i = 0, j = 0;
+    long zxc = 1;
+    cout << "Введите размерность массива через пробел: ";
+    cin >> lenght >> weight;
+    cout << "\nВведите диапазон диапазон значений в массиве через пробел ";
+    cin >> q >> qw;
+    qw = qw - q;
+    int** ptrarray = new int* [lenght];
+    for (int i = 0; i < lenght; i++)
+        ptrarray[i] = new int[weight];
+    for (int i = 0; i < lenght; i++) {
+        for (int j = 0; j < weight; j++) {
+            ptrarray[i][j] = rand() % qw + q;
+            cout << ptrarray[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << "\n\n";
+    long* B = new long [lenght];
+
+    for (int i = 0; i < lenght; i++) {
+        for (int j = 0; j < weight; j++) {
+            zxc = zxc * ptrarray[i][j];
+        }
+        B[i] = zxc;
+        cout << B[i] << " ";
+        zxc = 1;
+    }
+
+        delete B;
+        delete[] ptrarray;
+}
+
+
+
+
+
+Введите размерность массива через пробел:  5 5
+
+Введите диапазон диапазон значений в массиве через пробел 10 20
+10 12 18 10 12
+18 13 15 11 11
+19 11 11 13 19
+13 19 11 15 11
+15 16 13 10 12
+
+
+259200 424710 567853 448305 374400
+
+
+
+
+=========================================================================================================================
+№3
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "ru");
+    srand(time(0));
+    int lenght, weight, q, qw,i = 0,j = 0;
+    cout << "Введите размерность массива через пробел: ";
+    cin >> lenght >> weight;
+    cout << "\nВведите диапазон диапазон значений в массиве через пробел ";
+    cin >> q >> qw;
+    qw = qw - q;
+    float** ptrarray = new float* [lenght];
+    for (int i = 0; i < lenght; i++)
+        ptrarray[i] = new float[weight];
+    for (int i = 0; i < lenght; i++)
+        for (int j = 0; j < weight; j++)
+            ptrarray[i][j] = rand() % qw + q;
+    for (int i = 0; i < lenght; i++)
+    {
+        for (int j = 0; j < weight; j++) 
+            cout << ptrarray[i][j] << " ";
+            cout << endl;
+    }
+    cout << "\nСумма всех элементов массива = ";
+    long sum = 0;
+    for (int i = 0; i < lenght; i++)
+        for (int j = 0; j < weight; j++)
+            sum = sum + (ptrarray[i][j]);
+    cout << sum;
+   
+    float** C = new float* [lenght];
+    for (int i = 0; i < lenght; i++)
+    C[i] = new float[weight];
+    for (int i = 0; i < lenght; i++)
+        for (int j = 0; j < weight; j++)
+            C[i][j] = 1;
+    cout << "\n";
+    do {
+
+        C[i][j] = { ptrarray[i][j] };
+        i++;
+        j++;
+    } while (i != lenght && j != weight);
+    for (int i = 0; i < lenght; i++)
+    {
+        for (int j = 0; j < weight; j++) 
+            cout << C[i][j] << " ";
+            cout << endl;
+    }
+    delete C;
+    delete ptrarray;
+}
+Вывод: 
+Введите размерность массива через пробел: 10 10
+
+Введите диапазон диапазон значений в массиве через пробел 12 123
+24 63 24 50 71 55 44 100 122 84
+34 45 120 43 40 89 44 18 32 85
+48 86 73 59 17 44 70 98 90 77
+58 107 17 45 74 32 49 50 32 79
+91 95 102 59 65 93 15 21 100 88
+48 54 74 119 121 84 63 29 49 81
+99 22 15 111 32 79 15 95 53 72
+50 25 85 92 37 32 55 50 55 21
+37 115 120 88 37 108 117 110 85 110
+46 46 76 57 81 17 98 38 115 120
+
+Сумма всех элементов массива = 6559
+24 1 1 1 1 1 1 1 1 1
+1 45 1 1 1 1 1 1 1 1
+1 1 73 1 1 1 1 1 1 1
+1 1 1 45 1 1 1 1 1 1
+1 1 1 1 65 1 1 1 1 1
+1 1 1 1 1 84 1 1 1 1
+1 1 1 1 1 1 15 1 1 1
+1 1 1 1 1 1 1 50 1 1
+1 1 1 1 1 1 1 1 85 1
+1 1 1 1 1 1 1 1 1 120
+=========================================================================================================================
+№4
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "ru");
+    srand(time(0));
+    int lenght, weight, q, qw, i = 0, j = 0,zxc =0;
+    cout << "Введите размерность массива через пробел: ";
+    cin >> lenght >> weight;
+    cout << "\nВведите диапазон диапазон значений в массиве через пробел ";
+    cin >> q >> qw;
+    qw = qw - q;
+    int** ptrarray = new int* [lenght]; 
+    for (int i = 0; i < lenght; i++)
+        ptrarray[i] = new int[weight]; 
+    for (int i = 0; i < lenght; i++) {
+        for (int j = 0; j < weight; j++) {
+            ptrarray[i][j] = rand() % qw + q; 
+            cout << ptrarray[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << "\nСумма всех элементов массива = ";
+    long sum = 0;
+    for (int i = 0; i < lenght; i++)
+        for (int j = 0; j < weight; j++)
+            sum = sum + (ptrarray[i][j]);
+    cout << sum<< "\n";
+
+    int** B = new int* [lenght]; 
+    for (int i = 0; i < lenght; i++)
+    B[i] = new int[weight];
+    for (int i = 0; i < lenght; i++) {
+        for (int j = 0; j < weight; j++) {
+            if (ptrarray[i][j] < 0) {
+                B[i][j] = 1;
+                zxc++;
+            }
+            else
+                B[i][j] = ptrarray[i][j];
+                cout << B[i][j] << " ";
+        }
+        cout << "\n";
+    }
+    cout << "\n Количество замен на 1 в новом массиве = " << zxc;
+    delete B;
+    delete ptrarray;
+}
+Вывод:
+Введите размерность массива через пробел: 10 10
+
+Введите диапазон диапазон значений в массиве через пробел -100 101
+-10 -4 93 -87 -54 -6 -8 -50 27 -42
+-100 -31 40 66 -19 -52 -71 28 18 93
+-94 -75 68 -5 8 70 86 4 38 -17
+-24 -28 97 -62 87 13 35 51 -60 -3
+5 -63 76 -78 78 53 -55 84 -75 5
+-56 40 85 -12 -32 72 28 -89 -83 68
+-69 48 -37 57 17 -10 22 28 -45 -89
+17 60 89 -100 -27 88 -65 -1 -67 -5
+29 98 -15 79 -39 -57 -90 -95 -96 -46
+-6 50 -97 -35 75 85 -59 -33 23 -65
+
+Сумма всех элементов массива = -312
+1 1 93 1 1 1 1 1 27 1
+1 1 40 66 1 1 1 28 18 93
+1 1 68 1 8 70 86 4 38 1
+1 1 97 1 87 13 35 51 1 1
+5 1 76 1 78 53 1 84 1 5
+1 40 85 1 1 72 28 1 1 68
+1 48 1 57 17 1 22 28 1 1
+17 60 89 1 1 88 1 1 1 1
+29 98 1 79 1 1 1 1 1 1
+1 50 1 1 75 85 1 1 23 1
+
+ Количество замен на 1 в новом массиве = 55
+
+=========================================================================================================================
+№5
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "ru");
+    srand(time(0));
+    int lenght, weight, q, qw, i = 0, j = 0, zxc = 0;
+    cout << "Введите размерность массива через пробел: ";
+    cin >> lenght >> weight;
+    cout << "\nВведите диапазон диапазон значений в массиве через пробел ";
+    cin >> q >> qw;
+    qw = qw - q;
+    int** ptrarray = new int* [lenght];
+    for (int i = 0; i < lenght; i++)
+        ptrarray[i] = new int[weight];
+    for (int i = 0; i < lenght; i++) {
+        for (int j = 0; j < weight; j++) {
+            ptrarray[i][j] = rand() % qw + q;
+            cout << ptrarray[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << "\nСумма положительных элементов массива = ";
+    long sum = 0;
+
+    for (int i = 0; i < lenght; i++)
+        for (int j = 0; j < weight; j++)
+            if (ptrarray[i][j] > 0) {
+                sum = sum + (ptrarray[i][j]);
+            }
+
+    cout << sum << "\n";
+
+    int** B = new int* [lenght];
+    for (int i = 0; i < lenght; i++)
+        B[i] = new int[weight];
+    for (int i = 0; i < lenght; i++) {
+        for (int j = 0; j < weight; j++) {
+            B[i][j] = (ptrarray[i][j] * (-1));
+            cout << B[i][j]<<" ";
+        }
+        cout << "\n";
+    }
+        delete[] B;
+        delete[] ptrarray;
+}
+
+вывод 
+Введите размерность массива через пробел: 10 10
+
+Введите диапазон диапазон значений в массиве через пробел -10 10
+-1 1 -1 -7 -3 3 0 3 8 -8
+8 -6 -6 -6 1 -7 6 9 -9 1
+7 7 -9 -9 5 5 7 1 0 0
+-5 5 0 -5 6 -6 5 -3 2 7
+-4 -3 4 9 -6 -8 -9 8 7 -9
+-10 -7 5 -2 4 3 3 8 -4 -8
+8 -1 -3 9 -8 -9 4 -8 4 -10
+4 4 -7 -5 -8 -2 -5 -9 -5 -1
+7 -5 8 -2 -1 -1 5 8 8 -2
+2 1 9 0 -7 9 -6 0 8 -6
+
+Сумма положительных элементов массива = 246
+1 -1 1 7 3 -3 0 -3 -8 8
+-8 6 6 6 -1 7 -6 -9 9 -1
+-7 -7 9 9 -5 -5 -7 -1 0 0
+5 -5 0 5 -6 6 -5 3 -2 -7
+4 3 -4 -9 6 8 9 -8 -7 9
+10 7 -5 2 -4 -3 -3 -8 4 8
+-8 1 3 -9 8 9 -4 8 -4 10
+-4 -4 7 5 8 2 5 9 5 1
+-7 5 -8 2 1 1 -5 -8 -8 2
+-2 -1 -9 0 7 -9 6 0 -8 6
+=========================================================================================================================
+//№6
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "ru");
+    srand(time(0));
+    int lenght, weight, q, qw, i = 0, j = 0, zxc = 0;
+    cout << "Введите размерность массива через пробел: ";
+    cin >> lenght >> weight;
+    cout << "\nВведите диапазон диапазон значений в массиве через пробел ";
+    cin >> q >> qw;
+    qw = qw - q;
+    int** ptrarray = new int* [lenght];
+    for (int i = 0; i < lenght; i++)
+        ptrarray[i] = new int[weight];
+    for (int i = 0; i < lenght; i++) {
+        for (int j = 0; j < weight; j++) {
+            ptrarray[i][j] = rand() % qw + q;
+            cout << ptrarray[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << "\n\n";
+    int** C = new int* [lenght];
+    for (int i = 0; i < lenght; i++)
+        C[i] = new int[weight];
+    for (int i = 0; i < lenght; i++) {
+        for (int j = 0; j < weight; j++) {
+            for (int j = 0; j < weight; j++) {
+                if (ptrarray[i][j] > 0)
+                    zxc++;
+            }
+            C[i][j] = zxc;
+            cout << C[i][j] << " ";
+            zxc = 0;
+        }
+        cout << "\n";
+    }
+
+        delete[] C;
+        delete[] ptrarray;
+}
+
+вывод
+Введите размерность массива через пробел: 10 10
+
+Введите диапазон диапазон значений в массиве через пробел -10 10
+-3 3 -7 -2 -6 -9 -10 2 5 -7
+-2 8 -2 8 -8 -6 -10 -1 -7 -6
+-6 6 -9 -6 1 9 0 4 2 -10
+-10 6 -10 3 0 -4 1 -1 4 0
+2 9 -6 -1 8 -7 -10 -7 9 0
+9 -3 6 6 -2 -2 5 6 -10 0
+7 8 8 -4 -6 5 7 -3 8 -8
+0 8 0 -8 -8 -1 4 -1 2 -1
+4 -3 -3 -9 6 -8 -7 -1 -5 -6
+-10 6 1 3 5 -4 -6 4 -6 -5
+
+
+3 3 3 3 3 3 3 3 3 3
+2 2 2 2 2 2 2 2 2 2
+5 5 5 5 5 5 5 5 5 5
+4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 4 4 4
+5 5 5 5 5 5 5 5 5 5
+6 6 6 6 6 6 6 6 6 6
+3 3 3 3 3 3 3 3 3 3
+2 2 2 2 2 2 2 2 2 2
+5 5 5 5 5 5 5 5 5 5
+==========================================================================================================
+//№7
+#include <iostream>
+#include <ctime>
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "ru");
+    srand(time(0));
+    int lenght, weight, q, qw, i = 0, j = 0, neutral = 0, positive = 0, negative = 0;
+    cout << "Введите размерность массива через пробел: ";
+    cin >> lenght >> weight;
+    cout << "\nВведите диапазон диапазон значений в массиве через пробел ";
+    cin >> q >> qw;
+    qw = qw - q;
+    int** ptrarray = new int* [lenght];
+    for (int i = 0; i < lenght; i++)
+        ptrarray[i] = new int[weight];
+    for (int i = 0; i < lenght; i++) {
+        for (int j = 0; j < weight; j++) {
+            ptrarray[i][j] = rand() % qw + q;
+            cout << ptrarray[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << "\n";
+    int *C = new int [lenght];
+    for (int i = 0; i < lenght; i++) {
+        for (int j = 0; j < weight; j++) {
+            if (ptrarray[i][j] > 0) {
+                ++positive;
+            }
+            else if (ptrarray[i][j] < 0) {
+                ++negative; 
+            }
+            else {
+                ++neutral;
+            }
+        }
+    }
+    C[1] = positive;C[2] = negative;C[3] = neutral;
+    cout << "Коллисество положительных элементов в массиве = " << C[1] << "\nКолличество отрицательных элементов в массиве = " << C[2] << "\nКолличество нулевых элементов в массиве = "<< C[3];
+    delete[] C;
+    delete[] ptrarray;
+}
+Введите размерность массива через пробел: 10 10
+
+Введите диапазон диапазон значений в массиве через пробел -10 10
+-4 1 5 -1 0 -5 -10 9 -10 5
+6 9 5 8 3 6 -8 -4 4 8
+-5 0 -3 -4 -6 -10 4 -2 -3 -3
+-6 -4 -8 -7 -5 0 8 2 -7 -7
+-7 9 4 -6 -6 -9 -10 -4 -2 4
+-3 9 -4 8 -7 1 9 -1 2 -4
+4 -10 7 -9 3 7 0 -1 -4 1
+-3 8 -2 5 -1 7 -3 0 -1 6
+3 -1 -7 -4 1 -1 -2 7 9 9
+-7 5 5 -7 3 -9 4 4 1 -8
+
+Коллисество положительных элементов в массиве = 43
+Колличество отрицательных элементов в массиве = 52
+Колличество нулевых элементов в массиве = 5
+
+
+=========================================================================================================================
+№8
+#include <iostream>
+#include <ctime>
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "ru");
+    srand(time(0));
+    int lenght, weight, q, qw, i = 0, j = 0;
+    long zxc = 0;
+    cout << "Введите размерность массива через пробел: ";
+    cin >> lenght >> weight;
+    cout << "\nВведите диапазон диапазон значений в массиве через пробел ";
+    cin >> q >> qw;
+    qw = qw - q;
+    int** ptrarray = new int* [lenght];
+    for (int i = 0; i < lenght; i++)
+        ptrarray[i] = new int[weight];
+    for (int i = 0; i < lenght; i++) {
+        for (int j = 0; j < weight; j++) {
+            ptrarray[i][j] = rand() % qw + q;
+            cout << ptrarray[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << "\n";
+    int* C = new int [lenght];  
+    for (int i = 0; i < lenght; i++) {
+        for (int j = 0; j < weight; j++) {
+            if (ptrarray[i][j] > zxc)
+                zxc = ptrarray[i][j];
+        }
+         C[i] = zxc;
+         cout << C[i] <<"  ";
+         zxc = 0;
+    }
+    delete C;
+    delete[] ptrarray;
+}Вывод 
+
+Введите размерность массива через пробел: 10 10
+
+Введите диапазон диапазон значений в массиве через пробел 10 100
+50 10 77 44 24 40 24 33 64 92
+61 60 17 78 93 70 45 57 75 79
+42 71 71 41 31 25 32 80 34 70
+93 91 12 27 58 44 34 26 33 41
+95 40 44 90 86 84 97 65 46 49
+93 28 96 43 39 42 87 52 36 57
+93 37 68 47 85 22 83 13 67 60
+88 98 52 43 79 94 71 80 83 70
+63 71 35 80 36 88 42 91 54 53
+99 92 57 56 97 26 95 70 80 72
+
+92  93  80  93  97  96  93  98  91  99
+=========================================================================================================================
+//№9
+#include <iostream>
+#include <ctime>
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "ru");
+    srand(time(0));
+    int lenght, weight, q, qw, i = 0, j = 0,n,zxc1 = 0,zxc2 = 1;
+    cout << "Введите размерность массива через пробел: ";
+    cin >> lenght >> weight;
+    cout << "\nВведите диапазон диапазон значений в массиве через пробел ";
+    cin >> q >> qw;
+    qw = qw - q;
+    cout << "\nВведите число n с которым будет сравниваться каждый элементо массива = ";
+    cin >> n; 
+    int** ptrarray = new int* [lenght];
+    for (int i = 0; i < lenght; i++)
+        ptrarray[i] = new int[weight];
+    for (int i = 0; i < lenght; i++) {
+        for (int j = 0; j < weight; j++) {
+            ptrarray[i][j] = rand() % qw + q;
+            cout << ptrarray[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << "\n";
+    for (int i = 0; i < lenght; i++) {
+        for (int j = 0; j < weight; j++) {
+            if (n < ptrarray[i][j]) {
+                zxc1++;
+                zxc2 = zxc2 * ptrarray[i][j];
+            }
+            if (ptrarray[i][j] != n)
+                ptrarray[i][j] = 0;
+            cout << ptrarray[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << "Колличество элементов больших n = " << zxc1 << "\n произведение этих элементов = " << zxc2 << endl;
+    delete[] ptrarray;
+}вывод
+Введите размерность массива через пробел: 4 4
+
+Введите диапазон диапазон значений в массиве через пробел 10 14
+
+Введите число n с которым будет сравниваться каждый элементо массива = 12
+10 12 12 10
+10 10 13 13
+11 12 11 10
+13 12 11 11
+
+0 12 12 0
+0 0 0 0
+0 12 0 0
+0 12 0 0
+Колличество элементов больших n = 3
+ произведение этих элементов = 2197

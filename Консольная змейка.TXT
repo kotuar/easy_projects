@@ -1,0 +1,148 @@
+#include <iostream>//ввод вывод данных
+#include <conio.h>// консольный ввод-вывод данных(тип управление стрелочками)
+#include <ctime>//управление временем
+using namespace std;
+
+bool gameover;//веществееный тип данных
+const int width = 20; //граница размер
+const int height = 20;
+int x, y, eatx, eaty, score, ntail;
+int tailx[100], taily[100];//хвост макс 100
+enum going {// перечсление клавиш управления
+LEFT,
+RIGHT,
+UP,
+DOWN,
+STOP = 0
+};
+going num;//кнопка присваивается переменной нам
+
+void setup() {// тип данных чтобы функция не возвращала значение
+gameover = false;
+num = STOP;//чтобы игра в начале не начиналась
+x = width / 2 - 1;//чтобы голова распологалась по середине
+y = height / 2 - 1;
+eatx = rand() % 18 + 1;//рандомное положение еды
+eaty = rand() % 18 + 1;
+score = 0; //?счет в начале
+}
+
+void draw() {//отрисовка обьектов
+system("cls");//для очистки экрана
+for (int i = 0; i < width + 1; i++) //отрисовка верхних границ(+1 чтобы угл не скосися)
+cout « "#";
+cout « endl;
+for (int i = 0; i < height; i++) { // боковые границы
+for (int j = 0; j < width; j++) {//чтобы ставилось только на краях
+if (j == 0 | j == width - 1)
+cout « "#";
+if (i == y && j == x)
+cout « "@";
+else if (i == eaty && j == eatx)//создание еды
+cout « "$";
+else {
+bool hvost = false;//изначально нету хвоста
+for (int k = 0; k < ntail; k++){
+if (tailx[k] == j && taily[k] == i){//условие при котором возможно создание хвоста
+hvost = true;
+cout « "o";
+}
+}
+if (hvost == false)//
+cout « " ";
+}
+}
+cout « endl;
+}
+for (int i = 0; i < width + 1; i++) //нижние границы
+cout « "#";
+cout « endl;
+cout « "Score:" « score « endl;
+}
+
+void input() {
+//_kbhit() идет проверка нажатия на клавишу( возвращает истина если нажата, лож если не нажатто)
+//_getch() обраюатывает нажатие на клавишу и действие которое ей присвоено
+usleep(500000);//задержка в развитии богдана
+if (_kbhit()) //если клавиша нажата
+{
+switch (_getch()){//то выбирается кнопка и выполняется действие
+
+case 'w':
+num = UP;
+break;
+case 'd':
+num = RIGHT;
+break;
+case 'a':
+num = LEFT;
+break;
+case 's':
+num = DOWN;
+break;
+case '0':
+gameover = true;
+break;
+}
+}
+}
+
+void logic() {
+int predx = tailx[0];//
+int predy = taily[0];
+int buffx, buffy;
+tailx[0] = x;
+taily[0] = y;
+for (int i = 1; i < ntail; i++) {
+buffx = tailx[i];
+buffy = taily[i];
+tailx[i] = predx;
+taily[i] = predy;
+predx = buffx;
+predy = buffy;
+}
+switch(num) { // движение змейки
+case UP:
+y--;
+break;
+case DOWN:
+y++;
+break;
+case LEFT:
+x--;
+break;
+case RIGHT:
+x++;
+break;
+}
+/*if (x > width | y > height | x < 0 | y < 0)
+gameover = true; чтобы стенки убивали*/
+if (x >= width - 1)//перемещение через границы
+x = 0;
+else if (x < 0)
+x = width - 2;
+if (y >= height - 1)
+y = 0;
+else if (y < 0)
+y = height - 2;//телепорт змейки
+for (int i = 0; i < ntail; i++) {
+if (x == tailx[i] && y == taily[i])//если врежемся в себя то сдохнем
+gameover = true;
+}
+if(x == eatx && y == eaty){
+
+score+=1;
+eatx = rand() % 18 + 1;
+eaty = rand() % 18 + 1;
+ntail++;
+}//при поедании еды хвост ++ и счёт ++
+}
+int main() {
+srand (time(NULL));
+setup();
+while (gameover == false) {//если мы играем то это происходит
+draw();
+input();
+logic();
+}
+}

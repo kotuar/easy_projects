@@ -1,0 +1,39 @@
+#include <iostream>
+#include <stdlib.h>
+#include <ctime>
+using namespace std;
+int main () {
+int i,n,left,right;
+cout «"введите количество переменных = " « endl;
+cin » n;
+int a[n];
+srand(time(NULL));
+left = 0;
+right = n - 1;
+cout « "неотсортированный массив = ";
+for (i=0;i<n;i++){
+a[i] = rand() % 41 - 19;
+cout « a[i] « " ";
+}
+cout « endl;
+while (left < right) {
+for (i=left;i<left;i++){
+if (a[i] > a[i + 1]){
+swap (a[i],a[i + 1]);
+}
+}
+right —;
+for (i=right;i>left;i--){
+if(a[i] < a[i - 1]){
+swap (a[i],a[i - 1]);
+}
+}
+left ++;
+}
+cout « "отсортированный массив = ";
+for (i=0;i<n;i++){
+cout «a[i] « " ";
+}
+system("pause");
+
+}
